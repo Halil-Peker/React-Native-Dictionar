@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View,Text } from "react-native";
+import English from "./src/English";
+import Turkish from "./src/Turkish";
+import StartedPage from "./src/StartedPage";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+        name= "startedPage"
+        component={StartedPage}
+        options={{ headerShown: false }}
+        // options={{title: "StartedPage"}}
+        />
+        <Stack.Screen
+        name= "turkish"
+        component={Turkish}
+        options={{title: "Turkish"}}
+        />
+        <Stack.Screen
+        name= "english"
+        component={English}
+        options={{title: "English"}}
+        />
+      </Stack.Navigator>
+      
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
